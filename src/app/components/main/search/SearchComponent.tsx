@@ -5,8 +5,8 @@ class SearchComponent extends React.Component {
     public render()
     {
         return (
-            <div>
-                <h5>Поиск</h5>
+            <div className="d-none">
+
                 <div className="input-group mb-3 mt-3">
                     <br/>
 
@@ -18,6 +18,7 @@ class SearchComponent extends React.Component {
                 </div>
                 <br/>
                 <h6>Результаты поиска</h6>
+                <p className="small text-muted">Найдено 26 документов</p>
                 {new Array(5).fill(1).map((i) => <CardComponent key={i}/>)}
             </div>
 
