@@ -1,7 +1,10 @@
 import * as React from 'react';
+import {Route, Switch} from "react-router";
+import {BrowserRouter} from "react-router-dom";
 import './App.css';
-import Header from "./app/components/header/HeaderComponent";
-import MainComponent from "./app/components/main/MainComponent";
+import AppComponent from "./app/AppComponent";
+import LoginComponent from "./app/components/login/LoginComponent";
+import {PrivateRoute} from "./app/shared/routes";
 
 
 class App extends React.Component {
@@ -10,10 +13,13 @@ class App extends React.Component {
         return (
 
             <div className="main-container">
+                <BrowserRouter>
+                    <Switch>
+                        <Route path="/login" component={LoginComponent} />
+                        <PrivateRoute path="/" component={AppComponent} />
+                    </Switch>
 
-                <Header/>
-                <MainComponent/>
-                <footer/>
+                </BrowserRouter>
 
             </div>
         );

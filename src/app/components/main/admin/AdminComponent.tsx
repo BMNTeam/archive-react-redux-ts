@@ -5,7 +5,7 @@ class AdminComponent extends React.Component {
     public render()
     {
         return (
-            <div>
+            <div className="d-none">
                 {/*<h6>Введите данные отчета</h6>*/}
                 <br/><br/>
                 <form action="">
