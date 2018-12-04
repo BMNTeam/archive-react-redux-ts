@@ -10,12 +10,15 @@ import {IAuthentication, loginUser} from "../../services/auth/auth.actions";
 
 
 
-class LoginComponent extends React.Component<InjectedFormProps & {loginUser: (values: IAuthentication) => void} , any>
+class LoginComponent extends React.Component<InjectedFormProps & {loginUser: (values: IAuthentication) => void, errorMessage: string} , any>
 {
     constructor(props: any)
     {
-        super(props)
+        super(props);
+        this.submit = this.submit.bind(this);
     }
+
+
 
     public submit(values: IAuthentication)
     {
@@ -41,22 +44,25 @@ class LoginComponent extends React.Component<InjectedFormProps & {loginUser: (va
                             {/*<input type="checkbox" className="form-check-input" />*/}
                             {/*<label className="form-check-label">Запомнить этот компьютер</label>*/}
                         {/*</div>*/}
-                        <br/>
+                        <p className={ !this.props.errorMessage ? 'invisible text-danger' : 'text-danger'} role="alert">
+                          Неверное имя пользователя или пароль
+                        </p>
                         <button disabled={pristine} type="submit" className="btn btn-primary float-right">Войти</button>
                     </form>
+
                 </div>
             </div>
         );
     }
 }
 
-function mapStateToProps(state: any)
+function mapStateToProps(state: {login: {error: string}}) // TODO: make normal state
 {
     return {errorMessage: state.login.error}
 }
 
 const mapDispatchToProps = (dispatch: any) => ({ // TODO: get rid of any;
-    loginUser,
+    loginUser: (data: IAuthentication) => dispatch(loginUser(data)),
 });
 
 const reduxFormSignIn =  reduxForm({
