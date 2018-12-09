@@ -3,7 +3,7 @@ import {Redirect, Route} from "react-router";
 import {ACCESS_TOKEN} from "../services/auth/auth.constants";
 
 const token = localStorage.getItem(ACCESS_TOKEN);
-export function PrivateRoute({ component: Component, ...rest } : {component: any, path: string}) {
+export function PrivateRoute({ component: Component, ...rest } : {component: any, path: string}) { // TODO get rid of any
     return (
         <Route
             {...rest}

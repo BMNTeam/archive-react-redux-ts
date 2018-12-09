@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Route, Switch} from "react-router";
+import {Route} from "react-router";
 import AdminComponent from "./admin/AdminComponent";
 import "./main.component.css";
 
@@ -12,10 +12,8 @@ class MainComponent extends React.Component<any, any> {
             <div className="container bg-white content">
                 <br/>
                 <h5>Поиск</h5>
-                <Switch>
                     <Route path="/search" component={SearchComponent} />
                     <Route path="/admin" component={AdminComponent} />
-                </Switch>
 
             </div>
         )

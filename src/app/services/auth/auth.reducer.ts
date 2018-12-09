@@ -5,8 +5,8 @@ export function authReducer (state = {}, action: IAction<string>)
 {
     switch (action.type)
     {
-        case LOGIN_SUCCESS: return {...state, authenticated: true};
-        case LOG_OUT: return {...state, authenticated: false};
+        case LOGIN_SUCCESS: return {...state, authenticated: true, error: undefined};
+        case LOG_OUT: return {...state, authenticated: false, error: undefined};
         case LOGIN_FAILED: return {...state, error: action.payload};
         default: return state;
     }

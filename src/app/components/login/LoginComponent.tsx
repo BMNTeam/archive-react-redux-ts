@@ -1,11 +1,12 @@
-// import {IAuthentication, loginUser} from "../../services/auth/auth.actions";
 import "./login.component.css";
 
 import * as React from "react";
-// import {connect, DispatchProp} from "react-redux";
 import {connect} from "react-redux";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {ThunkDispatch} from "redux-thunk";
 import {IAuthentication, loginUser} from "../../services/auth/auth.actions";
+import {IAction} from "../../shared/types";
+import {IState} from "../../store";
 
 
 export interface ILogin {
@@ -20,8 +21,6 @@ class LoginComponent extends React.Component<InjectedFormProps & {loginUser: (va
         super(props);
         this.submit = this.submit.bind(this);
     }
-
-
 
     public submit(values: IAuthentication)
     {
@@ -43,10 +42,7 @@ class LoginComponent extends React.Component<InjectedFormProps & {loginUser: (va
                             <Field name="password" component="input" type="password" className="form-control"
                                    placeholder="Пароль" />
                         </div>
-                        {/*<div className="form-check">*/}
-                            {/*<input type="checkbox" className="form-check-input" />*/}
-                            {/*<label className="form-check-label">Запомнить этот компьютер</label>*/}
-                        {/*</div>*/}
+
                         <p className={ !this.props.errorMessage ? 'invisible text-danger' : 'text-danger'} role="alert">
                           Неверное имя пользователя или пароль
                         </p>
@@ -59,17 +55,17 @@ class LoginComponent extends React.Component<InjectedFormProps & {loginUser: (va
     }
 }
 
-function mapStateToProps(state: {login: {error: string}}) // TODO: make normal state
+function mapStateToProps(state: IState)
 {
     return {errorMessage: state.login.error}
 }
 
-const mapDispatchToProps = (dispatch: any) => ({ // TODO: get rid of any;
+const mapDispatchToProps = (dispatch: ThunkDispatch<IState, null, IAction<string>>) => ({
     loginUser: (data: IAuthentication) => dispatch(loginUser(data)),
 });
 
 const reduxFormSignIn =  reduxForm({
     form: 'login'
-})(LoginComponent as any); // TODO: get rid of any
+})(LoginComponent);
 
 export default connect(mapStateToProps, mapDispatchToProps)(reduxFormSignIn)

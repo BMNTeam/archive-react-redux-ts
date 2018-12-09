@@ -5,7 +5,7 @@ import {ILogin} from "./components/login/LoginComponent";
 import {rootReducer} from "./reducers/root.reducer";
 
 
-export interface IStore {
+export interface IState {
     form: Form,
     login: ILogin
 

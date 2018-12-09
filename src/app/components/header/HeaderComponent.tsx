@@ -1,6 +1,9 @@
 import * as React from "react";
 import {connect} from "react-redux";
+import {ThunkDispatch} from "redux-thunk";
 import {logoutUser} from "../../services/auth/auth.actions";
+import {IAction} from "../../shared/types";
+import {IState} from "../../store";
 
 class Header extends React.Component<{logoutUser: () => undefined}, any> {
     constructor(props: any)
@@ -24,7 +27,7 @@ class Header extends React.Component<{logoutUser: () => undefined}, any> {
     }
 }
 
-const mapDispatchToProps = (dispatch: any) => ({ // TODO: get rid of any;
+const mapDispatchToProps = (dispatch: ThunkDispatch<IState, null, IAction<string>>) => ({
     logoutUser: () => dispatch(logoutUser()),
 });
 

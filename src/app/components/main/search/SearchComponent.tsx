@@ -5,7 +5,7 @@ class SearchComponent extends React.Component {
     public render()
     {
         return (
-            <div className="d-none">
+            <div>
 
                 <div className="input-group mb-3 mt-3">
                     <br/>

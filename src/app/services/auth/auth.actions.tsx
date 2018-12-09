@@ -37,7 +37,7 @@ export const loginUser = (data: IAuthentication) => {
             if (res.status !== 200) { throw new Error()};
             dispatch({type: LOGIN_SUCCESS, payload: ""});
             localStorage.setItem(ACCESS_TOKEN, res.data.access_token);
-            history.push('/');
+            history.push('/search');
 
         } catch (e)
         {
