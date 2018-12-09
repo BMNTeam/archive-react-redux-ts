@@ -8,7 +8,10 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {IAuthentication, loginUser} from "../../services/auth/auth.actions";
 
 
-
+export interface ILogin {
+   error?: string;
+   authenticated: boolean;
+}
 
 class LoginComponent extends React.Component<InjectedFormProps & {loginUser: (values: IAuthentication) => void, errorMessage: string} , any>
 {

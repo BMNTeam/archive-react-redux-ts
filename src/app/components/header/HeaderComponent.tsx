@@ -1,6 +1,14 @@
 import * as React from "react";
+import {connect} from "react-redux";
+import {logoutUser} from "../../services/auth/auth.actions";
 
-class Header extends React.Component<any, any> {
+class Header extends React.Component<{logoutUser: () => undefined}, any> {
+    constructor(props: any)
+    {
+        super(props);
+
+    }
+
     public render()
     {
         return (
@@ -11,9 +19,15 @@ class Header extends React.Component<any, any> {
                     <a className="p-2 text-dark" href="#">К поиску</a>
 
                 </nav>
-                <a className="btn btn-outline-primary" href="#">Выйти</a>
+                <a className="btn btn-outline-primary" onClick={this.props.logoutUser}>Выйти</a>
             </div>)
     }
 }
 
-export default Header;
+const mapDispatchToProps = (dispatch: any) => ({ // TODO: get rid of any;
+    logoutUser: () => dispatch(logoutUser()),
+});
+
+
+
+export default connect(null, mapDispatchToProps)(Header);
