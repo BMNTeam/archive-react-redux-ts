@@ -7,7 +7,7 @@ class AppComponent extends React.Component
     public render()
     {
         return(
-            <div className="">
+            <div className='inherit'>
                 <Header/>
                 <MainComponent/>
                 <footer/>
@@ -15,5 +15,6 @@ class AppComponent extends React.Component
         );
     }
 }
+
 
 export default AppComponent;

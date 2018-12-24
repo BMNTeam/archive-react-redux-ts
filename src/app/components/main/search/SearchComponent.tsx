@@ -6,7 +6,7 @@ class SearchComponent extends React.Component {
     {
         return (
             <div>
-
+                <h3>Поиск</h3>
                 <div className="input-group mb-3 mt-3">
                     <br/>
 

@@ -9,12 +9,11 @@ class MainComponent extends React.Component<any, any> {
     public render()
     {
         return (
-            <div className="container bg-white content">
-                <br/>
-                <h5>Поиск</h5>
-                    <Route path="/search" component={SearchComponent} />
-                    <Route path="/admin" component={AdminComponent} />
-
+            <div className="content">
+               <div className="container bg-white full-screen-height">
+                   <Route path="/search" component={SearchComponent} />
+                   <Route path="/admin" component={AdminComponent} />
+               </div>
             </div>
         )
     }

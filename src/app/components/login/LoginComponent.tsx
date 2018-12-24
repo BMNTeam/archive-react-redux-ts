@@ -14,9 +14,9 @@ export interface ILogin {
    authenticated: boolean;
 }
 
-class LoginComponent extends React.Component<InjectedFormProps & {loginUser: (values: IAuthentication) => void, errorMessage: string} , any>
+class LoginComponent extends React.Component<InjectedFormProps & {loginUser: (values: IAuthentication) => void, errorMessage: string} , any> // TODO: get rid of any
 {
-    constructor(props: any)
+    constructor(props: any) // TODO: get rid of any
     {
         super(props);
         this.submit = this.submit.bind(this);
