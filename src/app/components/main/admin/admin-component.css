@@ -1,0 +1,11 @@
+.report-form {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+
+.form {
+    flex: 10;
+}
+

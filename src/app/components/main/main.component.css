@@ -1,4 +1,13 @@
 .content
 {
-    min-height: 100vh;
+    /*TODO replace with SASS variable*/
+    height: calc(100vh - 70px);
+    overflow: auto;
+}
+
+.full-screen-height
+{
+    min-height: 100%;
+    height: 100%;
+    overflow: auto;
 }
