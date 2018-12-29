@@ -4,7 +4,7 @@ import Select from "react-select";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import FileInput from "../../shared/FileInput";
 import {renderFormField} from "../../shared/RenderFormField";
-import "./admin-component.css";
+import "./admin-component.scss";
 
 
 const required = (value:string) => value ? undefined : 'Поле обязательно для заполнения';
@@ -23,7 +23,7 @@ class AdminComponent extends React.Component<InjectedFormProps> {
 
     public submit(e: object)
     {
-       console.log(123);
+       console.log(e);
     }
     public render()
     {
@@ -81,12 +81,15 @@ class AdminComponent extends React.Component<InjectedFormProps> {
                             <div className="col-md-6">
                                 <div className="form-group">
                                     <label>Руководитель</label>
-                                    <Select
-                                        options={options}
-                                        isMulti={false}
-                                        placeholder="Выбрать"
+                                    <Field component={props =>
+                                        <Select
+                                            value={props.input.value}
+                                            onChange={props.input.onChange}
+                                            options={options}
+                                            isMulti={false}
+                                            placeholder="Выбрать"
+                                        />}
                                         name="manager"
-
                                     />
                                     {/*
                                     <Field
@@ -100,12 +103,16 @@ class AdminComponent extends React.Component<InjectedFormProps> {
 
                                 <div className="form-group">
                                     <label>Исполнители</label>
-                                    <Select
-                                        options={options}
-                                        isMulti={true}
-                                        placeholder="Выбрать"
-                                        name="employees"
-
+                                    <Field component={props =>
+                                        <Select
+                                            value={props.input.value}
+                                            onChange={props.input.onChange}
+                                            options={options}
+                                            isMulti={true}
+                                            placeholder="Выбрать"
+                                        />
+                                        }
+                                           name="employees"
                                     />
                                     {/*
                                     <Field
@@ -129,8 +136,9 @@ class AdminComponent extends React.Component<InjectedFormProps> {
                                     <div className="custom-file">
                                         <Field
                                             component={FileInput}
+                                            placeholder="Файл краткого отчета"
+                                            validate={[required]}
                                             name="short_report"/>
-                                        <label className="custom-file-label">Выберите файл краткого отчета</label>
                                     </div>
                                 </div>
                                 <div className="form-group">
@@ -138,8 +146,9 @@ class AdminComponent extends React.Component<InjectedFormProps> {
                                     <div className="custom-file">
                                         <Field
                                             component={FileInput}
+                                            placeholder="Файл полного отчета"
+                                            validate={[required]}
                                             name="full_report"/>
-                                        <label className="custom-file-label">Выберите файл полного отчета</label>
                                     </div>
                                 </div>
                             </div>
@@ -148,8 +157,9 @@ class AdminComponent extends React.Component<InjectedFormProps> {
                                 <div className="custom-file">
                                     <Field
                                         component={FileInput}
+                                        placeholder="Файл презентации"
+                                        validate={[required]}
                                         name="presentation"/>
-                                    <label className="custom-file-label">Выберите файл презентации</label>
                                 </div>
                             </div>
                         </div>

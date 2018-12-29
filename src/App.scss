@@ -50,3 +50,7 @@ html, body {
 {
   position: relative;
 }
+$custom-file-text: (
+        en: "Загрузить"
+);
+@import '~bootstrap/scss/bootstrap';

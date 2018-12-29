@@ -1,4 +1,4 @@
-import "./login.component.css";
+import "./login.component.scss";
 
 import * as React from "react";
 import {connect} from "react-redux";

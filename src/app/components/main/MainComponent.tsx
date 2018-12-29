@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Route} from "react-router";
 import AdminComponent from "./admin/AdminComponent";
-import "./main.component.css";
+import "./main.component.scss";
 
 import SearchComponent from "./search/SearchComponent";
 

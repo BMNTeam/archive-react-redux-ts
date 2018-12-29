@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Provider} from "react-redux";
 
 import {Route, Router, Switch} from "react-router";
-import './App.css';
+import './App.scss';
 import AppComponent from "./app/AppComponent";
 import LoginComponent from "./app/components/login/LoginComponent";
 
