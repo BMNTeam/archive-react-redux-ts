@@ -4,7 +4,7 @@ import {Provider} from "react-redux";
 import {Route, Router, Switch} from "react-router";
 import './App.scss';
 import AppComponent from "./app/AppComponent";
-import LoginComponent from "./app/components/login/LoginComponent";
+import LoginComponent from "./app/structure/login/LoginComponent";
 
 import "./app/services/axious.defaultHeaders";
 import history from './app/shared/history';

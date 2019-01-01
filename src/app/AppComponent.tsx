@@ -1,6 +1,6 @@
 import * as React from "react";
-import Header from "./components/header/HeaderComponent";
-import MainComponent from "./components/main/MainComponent";
+import Header from "./structure/header/HeaderComponent";
+import MainComponent from "./structure/main/MainComponent";
 
 class AppComponent extends React.Component
 {

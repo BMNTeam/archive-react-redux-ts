@@ -40,7 +40,7 @@ export const loginUser = (data: IAuthentication) => {
                 username: data.email
 
             };
-            const res = await axios.post<IOAuthToken>(`${env.url}/oauth/token`, req);
+            const res = await axios.post<IOAuthToken>(`${env.url}oauth/token`, req);
             if (res.status !== 200) { throw new Error()};
             dispatch({type: LOGIN_SUCCESS, payload: ""});
             localStorage.setItem(ACCESS_TOKEN, res.data.access_token);
