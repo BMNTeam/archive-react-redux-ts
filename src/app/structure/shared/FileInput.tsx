@@ -25,7 +25,6 @@ class FileInput extends React.Component<WrappedFieldWithPlaceholder, HTMLInputEl
     {
         const {value} = this.props.input;
         const {dirty, error} = this.props.meta;
-        console.dir(this.props);
         return (
             <div>
                 <input
