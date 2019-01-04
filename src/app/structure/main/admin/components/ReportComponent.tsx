@@ -2,14 +2,14 @@ import * as React from "react";
 import {connect} from "react-redux";
 import Select from "react-select";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {env} from "../../../env";
-import FileInput from "../../shared/FileInput";
-import {renderFormField} from "../../shared/RenderFormField";
-import "./admin-component.scss";
+import {env} from "../../../../env";
+import FileInput from "../../../shared/FileInput";
+import {renderFormField} from "../../../shared/RenderFormField";
+import "./form-component.scss";
 
 import axious from "axios";
-
-const required = (value: string) => value ? undefined : 'Поле обязательно для заполнения';
+import {required} from "../../../shared/Validations";
+import {getAsFormData} from "../admin-shared";
 
 const options = [
     {value: 'chocolate', label: 'Иванов'},
@@ -17,18 +17,15 @@ const options = [
     {value: 'vanilla', label: 'Сидоров'}
 ];
 
-class AdminComponent extends React.Component<InjectedFormProps> {
+class ReportComponent extends React.Component<InjectedFormProps> {
     constructor(props: InjectedFormProps)
     {
         super(props);
     }
 
-    public async submit(data: IReport)
+    public async submit(data: Models.IReport)
     {
-        const formData = new FormData();
-        Object.entries(data).map(([k, v]) => {
-            formData.append(k, this.stringifyIfObject(v));
-        });
+        const formData = getAsFormData<Models.IReport>(data);
         const r = await axious.post(`${env.url}${env.endpoints.reports}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data;'
@@ -44,7 +41,7 @@ class AdminComponent extends React.Component<InjectedFormProps> {
         const {pristine, handleSubmit, invalid, reset} = this.props;
 
         return (
-            <form action="" onSubmit={handleSubmit((e: IReport) => this.submit(e))} className="report-form">
+            <form action="" onSubmit={handleSubmit((e: Models.IReport) => this.submit(e))} className="report-form">
 
                 <div className="header">
                     <h2>Добавление отчета</h2>
@@ -194,18 +191,11 @@ class AdminComponent extends React.Component<InjectedFormProps> {
 
     }
 
-    private stringifyIfObject (obj: Blob | string)
-    {
-        if (typeof obj === 'object' && !(obj !instanceof Blob))
-        {
-            return JSON.stringify(obj);
-        }
-        return obj
-    }
+
 }
 
 const reduxFormAddReport = reduxForm({
     form: 'reduxF'
-})(AdminComponent);
+})(ReportComponent);
 
 export default connect()(reduxFormAddReport);
