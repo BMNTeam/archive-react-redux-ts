@@ -10,6 +10,7 @@
   },
   "rules": {
     "jsx-no-lambda": [ false ],
-    "no-console": false
+    "no-console": false,
+    "no-namespace": false
   }
 }
