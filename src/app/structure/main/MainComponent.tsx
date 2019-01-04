@@ -1,6 +1,9 @@
 import * as React from "react";
 import {Route} from "react-router";
-import AdminComponent from "./admin/AdminComponent";
+import ArticleComponent from "./admin/components/ArticleComponent";
+import EmployeesComponent from "./admin/components/EmployeesComponent";
+import JournalComponent from "./admin/components/JournalComponent";
+import ReportComponent from "./admin/components/ReportComponent";
 import "./main.component.scss";
 
 import SearchComponent from "./search/SearchComponent";
@@ -12,7 +15,10 @@ class MainComponent extends React.Component<any, any> {
             <div className="content">
                <div className="container bg-white full-screen-height">
                    <Route path="/search" component={SearchComponent} />
-                   <Route path="/admin" component={AdminComponent} />
+                   <Route path="/admin" component={ReportComponent} />
+                   <Route path="/employees" component={EmployeesComponent} />
+                   <Route path="/article" component={ArticleComponent} />
+                   <Route path="/journal" component={JournalComponent} />
                </div>
             </div>
         )
