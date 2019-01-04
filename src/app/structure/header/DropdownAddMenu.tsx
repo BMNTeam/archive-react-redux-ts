@@ -43,8 +43,9 @@ export class DropdownMenu extends React.Component<{ toggleDropdown: (v?: boolean
                 <Link to="/admin" className="dropdown-item">Отчет</Link>
                 <Link to="/admin" className="dropdown-item">Ссылку</Link>
                 <div className="dropdown-divider" />
-                <Link to="/admin" className="dropdown-item">Сотрудника</Link>
-                <Link to="/admin" className="dropdown-item">Статью</Link>
+                <Link to="/employees" className="dropdown-item">Сотрудника</Link>
+                <Link to="/article" className="dropdown-item">Статью</Link>
+                <Link to="/journal" className="dropdown-item">Журнал</Link>
 
             </div>
         )
