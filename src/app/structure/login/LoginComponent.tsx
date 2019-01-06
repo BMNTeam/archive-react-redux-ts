@@ -55,17 +55,17 @@ class LoginComponent extends React.Component<InjectedFormProps & {loginUser: (va
     }
 }
 
-function mapStateToProps(state: IState)
-{
-    return {errorMessage: state.login.error}
-}
+    function mapStateToProps(state: IState)
+    {
+        return {errorMessage: state.login.error}
+    }
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<IState, null, IAction<string>>) => ({
-    loginUser: (data: IAuthentication) => dispatch(loginUser(data)),
-});
+    const mapDispatchToProps = (dispatch: ThunkDispatch<IState, null, IAction<string>>) => ({
+        loginUser: (data: IAuthentication) => dispatch(loginUser(data)),
+    });
 
-const reduxFormSignIn =  reduxForm({
-    form: 'login'
-})(LoginComponent);
+    const reduxFormSignIn =  reduxForm({
+        form: 'login'
+    })(LoginComponent);
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxFormSignIn)
+    export default connect(mapStateToProps, mapDispatchToProps)(reduxFormSignIn)

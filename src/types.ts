@@ -32,3 +32,12 @@ declare namespace Models
         url: string;
     }
 }
+
+declare namespace Search
+{
+    interface ISearchRequest {
+        value: string;
+        type: 'report' | 'reference';
+
+    }
+}
