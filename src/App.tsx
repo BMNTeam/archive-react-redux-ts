@@ -20,7 +20,7 @@ class App extends React.Component {
                 <div className="main-container">
                     <Router history={history}>
                         <Switch>
-                            <Route  path="/login" component={LoginComponent}/>
+                            <Route path="/login" component={LoginComponent}/>
                             <PrivateRoute path="/" component={AppComponent}/>
                         </Switch>
 
