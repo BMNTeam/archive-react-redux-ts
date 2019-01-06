@@ -1,6 +1,7 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import Select from "react-select";
+import {OptionsType} from "react-select/lib/types";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {env} from "../../../../env";
 import FileInput from "../../../shared/FileInput";
@@ -9,29 +10,51 @@ import "./form-component.scss";
 
 import axious from "axios";
 import {required} from "../../../shared/Validations";
+import {AdminService} from "../admin-service";
 import {getAsFormData} from "../admin-shared";
 
-const options = [
-    {value: 'chocolate', label: 'Иванов'},
-    {value: 'strawberry', label: 'Петров'},
-    {value: 'vanilla', label: 'Сидоров'}
-];
+interface IOpitons {
+    articles: OptionsType<number>,
+    employees: OptionsType<number>
+}
 
-class ReportComponent extends React.Component<InjectedFormProps> {
+class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
     constructor(props: InjectedFormProps)
     {
         super(props);
+        this.state = {
+            articles: [],
+            employees: []
+        }
+    }
+
+    public componentWillMount(): void
+    {
+        this.setOptions();
+    }
+
+    public async setOptions()
+    {
+        const service = new AdminService();
+        const employeesOptions = await service.getEmployeesOptions();
+        const articlesOptions = await service.getArticleOptions();
+
+        this.setState(Object.assign(this.state, {
+            articles: articlesOptions,
+            employees: employeesOptions
+        }));
     }
 
     public async submit(data: Models.IReport)
     {
         const formData = getAsFormData<Models.IReport>(data);
-        const r = await axious.post(`${env.url}${env.endpoints.reports}`, formData, {
+        await axious.post(`${env.url}${env.endpoints.reports}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data;'
             }
         });
-        console.dir(r);
+        this.props.reset();
+
     }
 
 
@@ -96,7 +119,7 @@ class ReportComponent extends React.Component<InjectedFormProps> {
                                     <Select
                                         value={props.input.value}
                                         onChange={props.input.onChange}
-                                        options={options}
+                                        options={this.state.employees}
                                         isMulti={false}
                                         placeholder="Выбрать"
                                     />}
@@ -118,7 +141,7 @@ class ReportComponent extends React.Component<InjectedFormProps> {
                                     <Select
                                         value={props.input.value}
                                         onChange={props.input.onChange}
-                                        options={options}
+                                        options={this.state.employees}
                                         isMulti={true}
                                         placeholder="Выбрать"
                                     />
@@ -134,6 +157,19 @@ class ReportComponent extends React.Component<InjectedFormProps> {
                                     </Field>
                                     */}
 
+                            </div>
+                            <div className="form-group">
+                                <label>Научные работы</label>
+                                <Field component={props =>
+                                    <Select
+                                        value={props.input.value}
+                                        onChange={props.input.onChange}
+                                        options={this.state.articles}
+                                        isMulti={true}
+                                        placeholder="Выбрать"
+                                    />}
+                                       name="articles"
+                                />
                             </div>
                         </div>
                     </div>
@@ -172,6 +208,9 @@ class ReportComponent extends React.Component<InjectedFormProps> {
                                     validate={[required]}
                                     name="presentation"/>
                             </div>
+                        </div>
+                        <div className="col-md-12">
+                            <p className="small text-muted">* Все поля обязательны для заполнения</p>
                         </div>
                     </div>
                 </div>

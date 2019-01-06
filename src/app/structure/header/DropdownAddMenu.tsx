@@ -26,13 +26,10 @@ export class DropdownMenu extends React.Component<{ toggleDropdown: (v?: boolean
 
     public handleClick(e: MouseEvent)
     {
-
         if(this.node.current!.contains(e.target as Node) && !(e.target instanceof HTMLAnchorElement))
         {
-
             return;
         }
-
         this.props.toggleDropdown(false);
     }
 
@@ -41,12 +38,11 @@ export class DropdownMenu extends React.Component<{ toggleDropdown: (v?: boolean
         return (
             <div ref={this.node} className='dropdown-menu show' aria-labelledby="navbarDropdown">
                 <Link to="/admin" className="dropdown-item">Отчет</Link>
-                <Link to="/admin" className="dropdown-item">Ссылку</Link>
+                <Link to="/admin" className="dropdown-item">Справку</Link>
                 <div className="dropdown-divider" />
                 <Link to="/employees" className="dropdown-item">Сотрудника</Link>
                 <Link to="/article" className="dropdown-item">Статью</Link>
                 <Link to="/journal" className="dropdown-item">Журнал</Link>
-
             </div>
         )
     }
