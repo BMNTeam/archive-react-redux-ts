@@ -35,7 +35,7 @@ class JournalComponent extends React.Component<InjectedFormProps> {
             <form action="" onSubmit={handleSubmit((e: Models.IJournal) => this.submit(e))} className="report-form">
 
                 <div className="header">
-                    <h2>Добавление Журнала</h2>
+                    <h2>Добавление журнала</h2>
                     <br/>
                 </div>
 

@@ -9,6 +9,7 @@ declare namespace Models
         link: string;
     }
     interface IReport extends ObjectConstructor {
+        id?: number;
         date: string;
         employees: number[];
         fullReport: File;
@@ -35,9 +36,23 @@ declare namespace Models
 
 declare namespace Search
 {
+    import IEmployee = Models.IEmployee;
+
     interface ISearchRequest {
         value: string;
         type: 'report' | 'reference';
 
+    }
+
+    interface ISearchData {
+        authors: IEmployee[];
+        short_report_text: string;
+        id: number;
+        name: string
+    }
+
+    interface ISearchResult {
+        error?: boolean;
+        data: ISearchData[]
     }
 }

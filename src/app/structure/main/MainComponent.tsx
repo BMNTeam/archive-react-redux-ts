@@ -7,6 +7,7 @@ import ReportComponent from "./admin/components/ReportComponent";
 import "./main.component.scss";
 
 import SearchComponent from "./search/SearchComponent";
+import {SingleReportComponent} from "./single/SingleReportComponent";
 
 class MainComponent extends React.Component<any, any> {
     public render()
@@ -19,6 +20,7 @@ class MainComponent extends React.Component<any, any> {
                    <Route path="/employees" component={EmployeesComponent} />
                    <Route path="/article" component={ArticleComponent} />
                    <Route path="/journal" component={JournalComponent} />
+                   <Route path="/single/:id" component={SingleReportComponent} />
                </div>
             </div>
         )

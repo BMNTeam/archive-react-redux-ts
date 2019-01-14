@@ -8,22 +8,17 @@ import {IState} from "../../../store";
 import CardComponent from "./CardComponent";
 import ISearchRequest = Search.ISearchRequest;
 
-
-class SearchComponent extends React.Component<InjectedFormProps & {
-    report: Search.ISearchRequest[];
+interface ISearchProps {
+    reports: Search.ISearchResult;
     search(data: Search.ISearchRequest): void;
-}> {
+}
+
+class SearchComponent extends React.Component<InjectedFormProps & ISearchProps> {
 
     constructor(props: any)
     {
        super(props);
        this.submit = this.submit.bind(this);
-    }
-
-    public componentDidUpdate(): void
-    {
-        // TODO: get rid of it
-        console.dir(this.props.report);
     }
 
     public submit(data: Search.ISearchRequest)
@@ -34,6 +29,7 @@ class SearchComponent extends React.Component<InjectedFormProps & {
 
     public render()
     {
+        const {reports} = this.props;
         return (
             <div>
                 <h3>Поиск</h3>
@@ -54,9 +50,19 @@ class SearchComponent extends React.Component<InjectedFormProps & {
                     </div>
                 </form>
                 <br/>
-                <h6>Результаты поиска</h6>
-                <p className="small text-muted">Найдено 26 документов</p>
-                {new Array(5).fill(1).map((e, i) => <CardComponent key={i}/>)}
+                {reports.data && <div>
+                  <h6>Результаты поиска</h6>
+                  <p className="small text-muted">Найдено {reports.data.length} документа</p>
+                </div>}
+                { reports.data && reports.data
+                    .map(r => <CardComponent
+                        key={r.id}
+                        authors={r.authors}
+                        id={r.id}
+                        name={r.name}
+                        shortText={r.short_report_text}
+                        />
+                    )}
             </div>
 
 
