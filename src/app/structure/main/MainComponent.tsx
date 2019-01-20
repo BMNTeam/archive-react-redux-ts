@@ -20,7 +20,7 @@ class MainComponent extends React.Component<any, any> {
                    <Route path="/employees" component={EmployeesComponent} />
                    <Route path="/article" component={ArticleComponent} />
                    <Route path="/journal" component={JournalComponent} />
-                   <Route path="/single/:id" component={SingleReportComponent} />
+                   <Route path="/single/:type/:id" component={SingleReportComponent} />
                </div>
             </div>
         )

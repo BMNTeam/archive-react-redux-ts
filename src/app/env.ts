@@ -5,7 +5,8 @@ export const env = {
         employees: 'api/employees',
         journals: 'api/journals',
         reports: 'api/reports',
-        search: 'api/search'
+        search: 'api/search',
+        singleSearch: 'api/search/single'
     },
     url: 'http://archive.com:8888/',
 

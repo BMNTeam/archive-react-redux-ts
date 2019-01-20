@@ -48,6 +48,14 @@ class SearchComponent extends React.Component<InjectedFormProps & ISearchProps> 
                                 <i className="fa fa-search"/>Поиск</button>
                         </div>
                     </div>
+                    <div className="form-check form-check-inline">
+                        <input className="form-check-input" type="checkbox" defaultChecked={true} value="option1"/>
+                            <label className="form-check-label">Отчет</label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                        <input className="form-check-input" type="checkbox" value="option2"/>
+                            <label className="form-check-label" >Справка</label>
+                    </div>
                 </form>
                 <br/>
                 {reports.data && <div>
@@ -61,6 +69,7 @@ class SearchComponent extends React.Component<InjectedFormProps & ISearchProps> 
                         id={r.id}
                         name={r.name}
                         shortText={r.short_report_text}
+                        type={r.type}
                         />
                     )}
             </div>

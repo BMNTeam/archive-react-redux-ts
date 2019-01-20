@@ -44,11 +44,13 @@ declare namespace Search
 
     }
 
+    type ISearchDataType = "report" | "reference";
     interface ISearchData {
         authors: IEmployee[];
         short_report_text: string;
         id: number;
-        name: string
+        name: string;
+        type: ISearchDataType;
     }
 
     interface ISearchResult {
