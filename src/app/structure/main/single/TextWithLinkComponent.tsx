@@ -36,7 +36,11 @@ export class TextWithLinkComponent extends React.Component<ITextWithLinkProps, {
     return (
       <div className="row mb-2">
         <div className="col-md-6"><b>{this.props.name}</b></div>
-        <div className="col-md-6 text-right"><a href={this.props.link}>Скачать</a></div>
+        <div className="col-md-6 text-right">
+          <a href={this.props.link}>
+            <button title="Загрузить" className="btn btn-link"><i className="fa fa-download"/></button>
+          </a>
+        </div>
         {this.props.text &&
         <div className="col-md-12" style={style}>
           {this.props.text}
@@ -46,8 +50,10 @@ export class TextWithLinkComponent extends React.Component<ITextWithLinkProps, {
           this.props.text &&
           <div className="col-md-12 text-right">
             <a href="#" onClick={this.toggleHeight}>
-              {this.state.small && <span>Развернуть</span>}
-              {!this.state.small && <span>Свернуть</span>}
+              {this.state.small &&
+              <button title="Развернуть" className="btn btn-link"><i className=" fa fa-caret-down"/></button>}
+              {!this.state.small &&
+              <button title="Свернуть" className="btn btn-link"><i className="fa fa-caret-up"/></button>}
             </a>
           </div>
         }
