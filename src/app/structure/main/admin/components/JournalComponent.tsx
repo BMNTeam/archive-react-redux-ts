@@ -18,7 +18,7 @@ class JournalComponent extends React.Component<InjectedFormProps> {
         super(props);
     }
 
-    public async submit(data: Models.IJournal)
+    public async submit(data: Models.Client.IJournal)
     {
         const r = await axious.post(`${env.url}${env.endpoints.journals}`, data);
         if (r.status === 200)
@@ -32,7 +32,7 @@ class JournalComponent extends React.Component<InjectedFormProps> {
         const {pristine, handleSubmit, invalid, reset} = this.props;
 
         return (
-            <form action="" onSubmit={handleSubmit((e: Models.IJournal) => this.submit(e))} className="report-form">
+            <form action="" onSubmit={handleSubmit((e: Models.Client.IJournal) => this.submit(e))} className="report-form">
 
                 <div className="header">
                     <h2>Добавление журнала</h2>

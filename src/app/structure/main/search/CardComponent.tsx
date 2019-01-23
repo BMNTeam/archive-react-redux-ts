@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Link} from "react-router-dom";
 import "./card.component.scss";
-import IEmployee = Models.IEmployee;
+import IEmployee = Models.Client.IEmployee;
 import ISearchDataType = Search.ISearchDataType;
 
 interface ICardProps {

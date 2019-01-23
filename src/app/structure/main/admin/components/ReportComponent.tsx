@@ -45,9 +45,9 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
         }));
     }
 
-    public async submit(data: Models.IReport)
+    public async submit(data: Models.Client.INewReport)
     {
-        const formData = getAsFormData<Models.IReport>(data);
+        const formData = getAsFormData<Models.Client.INewReport>(data);
         await axious.post(`${env.url}${env.endpoints.reports}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data;'
@@ -64,7 +64,7 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
         const {pristine, handleSubmit, invalid, reset} = this.props;
 
         return (
-            <form action="" onSubmit={handleSubmit((e: Models.IReport) => this.submit(e))} className="report-form">
+            <form action="" onSubmit={handleSubmit((e: Models.Client.INewReport) => this.submit(e))} className="report-form">
 
                 <div className="header">
                     <h2>Добавление отчета</h2>

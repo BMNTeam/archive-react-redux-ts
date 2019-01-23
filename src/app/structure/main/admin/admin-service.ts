@@ -5,19 +5,19 @@ export class AdminService
 {
    public async getEmployeesOptions()
    {
-       const employees = await this.getData<Models.IEmployee>(env.endpoints.employees);
+       const employees = await this.getData<Models.Client.IEmployee>(env.endpoints.employees);
        return employees.map(e => this.getOptions(e.id, e.full_name))
    }
 
    public async getJournalsOptions()
    {
-       const journals = await this.getData<Models.IJournal>(env.endpoints.journals);
+       const journals = await this.getData<Models.Client.IJournal>(env.endpoints.journals);
        return journals.map(j => this.getOptions(j.id, j.name));
    }
 
    public async getArticleOptions()
    {
-       const articles = await this.getData<Models.IArticle>(env.endpoints.articles);
+       const articles = await this.getData<Models.Client.IArticle>(env.endpoints.articles);
        return articles.map(j => this.getOptions(j.id, j.name));
    }
 

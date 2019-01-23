@@ -44,9 +44,9 @@ class ArticleComponent extends React.Component<InjectedFormProps, {
     }
 
 
-    public async submit(data: Models.IArticle)
+    public async submit(data: Models.Client.IArticle)
     {
-        const formData = getAsFormData<Models.IArticle>(data);
+        const formData = getAsFormData<Models.Client.IArticle>(data);
         const r = await axious.post(`${env.url}${env.endpoints.articles}`, formData, {
             headers: { 'Content-Type': 'multipart/form-data;'}
         });
@@ -63,7 +63,7 @@ class ArticleComponent extends React.Component<InjectedFormProps, {
         const {pristine, handleSubmit, invalid, reset} = this.props;
 
         return (
-            <form action="" onSubmit={handleSubmit((e: Models.IArticle) => this.submit(e))} className="report-form">
+            <form action="" onSubmit={handleSubmit((e: Models.Client.IArticle) => this.submit(e))} className="report-form">
 
                 <div className="header">
                     <h2>Добавление статьи</h2>

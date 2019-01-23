@@ -2,7 +2,7 @@ import {IAction} from "../../shared/types";
 import {IState} from "../../store";
 import {SEARCH_CLEAR, SEARCH_ERROR, SEARCH_RESULTS} from "./search.constants";
 
-export function searchReducer (state: IState = {} as IState, action: IAction<Models.IReport[]>)
+export function searchReducer (state: IState = {} as IState, action: IAction<Models.Client.INewReport[]>)
 {
     switch (action.type)
     {
