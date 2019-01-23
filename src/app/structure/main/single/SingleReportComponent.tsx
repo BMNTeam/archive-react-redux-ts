@@ -2,7 +2,7 @@ import axious from "axios";
 import * as React from "react";
 import {env} from "../../../env";
 import {TextWithLinkComponent} from "./TextWithLinkComponent";
-import IReport = Models.IReport;
+import IReport = Models.Server.IReport;
 import ISearchDataType = Search.ISearchDataType;
 
 interface ISingleState {
@@ -30,47 +30,53 @@ export class SingleReportComponent extends React.Component<any, ISingleState> {
     {
       return <div/>;
     }
+
+    const date = new Date(+this.state.data.date * 1000);
     return (
       <div>
         <div className="row">
           <div className="col-md-12">
-            <h2>Название отчета: {this.state.data.name}</h2>
-            <h5>Номер отчета: {this.state.data.themeNumber}</h5>
+            <h2>{this.state.data.name}</h2>
+            <h5>№: {this.state.data.theme_number}</h5>
           </div>
         </div>
         <br/>
         <h3>Дополнительная информация</h3>
 
         <div className="row">
-          <div className="col-sm-6">
-            <h5>Авторы</h5>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item pl-0">Год</li>
-              <li className="list-group-item pl-0">Месяц</li>
-              <li className="list-group-item pl-0">Число</li>
-            </ul>
-          </div>
+
           <div className="col-sm-6">
             <h5>Дата</h5>
             <ul className="list-group list-group-flush">
-              <li className="list-group-item pl-0">Год</li>
-              <li className="list-group-item pl-0">Месяц</li>
-              <li className="list-group-item pl-0">Число</li>
+              <li className="list-group-item pl-0">Год: {date.getFullYear()}</li>
+              <li className="list-group-item pl-0">Месяц: {date.getMonth() + 1}</li>
+              <li className="list-group-item pl-0">Число: {date.getDay() + 1}</li>
+            </ul>
+          </div>
+          <div className="col-sm-6">
+            <h5>Авторы</h5>
+            <ul className="list-group list-group-flush">
+              {this.state.data.employees.length
+                ? this.state.data.employees.map(i =>
+                  <li key={i.id} className="list-group-item pl-0">
+                    <i className="fa fa-address-card"/> {i.full_name} |
+                    <span className="text-muted">{i.position}</span>
+                  </li>)
+                : "Нет данных об авторах"
+              }
             </ul>
           </div>
         </div>
-
+        <br/>
         <h3>Документы</h3>
         <div className="row">
           <div className="col-sm-12">
-            <TextWithLinkComponent link="http://123" name="Краткий отчет"
-                                   text="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of
-
-"
+            <TextWithLinkComponent link={this.state.data.short_report_url} name="Краткий отчет"
+                                   text={this.state.data.short_report_text}
             />
-            <TextWithLinkComponent link="http://123" name="Полный отчет"
-                                   text=""/>
-            <TextWithLinkComponent link="http://123" name="Презентация"/>
+            <TextWithLinkComponent link={this.state.data.full_report_url} name="Полный отчет"
+                                   text={this.state.data.full_report_text}/>
+            <TextWithLinkComponent link={this.state.data.presentation_url} name="Презентация"/>
           </div>
         </div>
 
@@ -84,7 +90,6 @@ export class SingleReportComponent extends React.Component<any, ISingleState> {
     const res = await axious.get<IReport>(`${env.url}${env.endpoints.singleSearch}/${this.props.match.params.type}/${this.props.match.params.id}`);
     const data = res.data;
     this.setState({...this.state, data});
-
   }
 
 }
