@@ -38,7 +38,7 @@ export class DropdownMenu extends React.Component<{ toggleDropdown: (v?: boolean
         return (
             <div ref={this.node} className='dropdown-menu show' aria-labelledby="navbarDropdown">
                 <Link to="/admin" className="dropdown-item">Отчет</Link>
-                <Link to="/admin" className="dropdown-item">Справку</Link>
+                <Link to="/reference" className="dropdown-item">Справку</Link>
                 <div className="dropdown-divider" />
                 <Link to="/employees" className="dropdown-item">Сотрудника</Link>
                 <Link to="/article" className="dropdown-item">Статью</Link>

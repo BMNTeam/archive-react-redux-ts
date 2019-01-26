@@ -68,7 +68,7 @@ class SearchComponent extends React.Component<InjectedFormProps & ISearchProps> 
                         authors={r.authors}
                         id={r.id}
                         name={r.name}
-                        shortText={r.short_report_text}
+                        text={r.text}
                         type={r.type}
                         />
                     )}

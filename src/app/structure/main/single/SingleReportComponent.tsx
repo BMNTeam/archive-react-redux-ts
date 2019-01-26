@@ -4,6 +4,7 @@ import {env} from "../../../env";
 import {TextWithLinkComponent} from "./TextWithLinkComponent";
 import IReport = Models.Server.IReport;
 import ISearchDataType = Search.ISearchDataType;
+import IEmployee = Models.Server.IEmployee;
 
 interface ISingleState {
   data?: IReport
@@ -26,11 +27,11 @@ export class SingleReportComponent extends React.Component<any, ISingleState> {
 
   public render(): React.ReactNode
   {
-    if(!this.state.data)
+    if (!this.state.data)
     {
       return <div/>;
     }
-
+    const {data} = this.state;
     const date = new Date(+this.state.data.date * 1000);
     return (
       <div>
@@ -56,12 +57,12 @@ export class SingleReportComponent extends React.Component<any, ISingleState> {
           <div className="col-sm-6">
             <h5>Авторы</h5>
             <ul className="list-group list-group-flush">
-              {this.state.data.employees.length
-                ? this.state.data.employees.map(i =>
-                  <li key={i.id} className="list-group-item pl-0">
-                    <i className="fa fa-address-card"/> {i.full_name} |
-                    <span className="text-muted">{i.position}</span>
-                  </li>)
+              {data.manager && data.manager.id
+                ? getEmployeesList([data.manager], '', true)
+                : <li>Нет данных о руководителе</li>
+              }
+              {data.employees.length
+                ? getEmployeesList(data.employees, 'fa-address-card')
                 : "Нет данных об авторах"
               }
             </ul>
@@ -71,12 +72,12 @@ export class SingleReportComponent extends React.Component<any, ISingleState> {
         <h3>Документы</h3>
         <div className="row">
           <div className="col-sm-12">
-            <TextWithLinkComponent link={this.state.data.short_report_url} name="Краткий отчет"
-                                   text={this.state.data.short_report_text}
+            <TextWithLinkComponent link={data.short_report_url} name="Краткий отчет"
+                                   text={data.short_report_text}
             />
-            <TextWithLinkComponent link={this.state.data.full_report_url} name="Полный отчет"
-                                   text={this.state.data.full_report_text}/>
-            <TextWithLinkComponent link={this.state.data.presentation_url} name="Презентация"/>
+            <TextWithLinkComponent link={data.full_report_url} name="Полный отчет"
+                                   text={data.full_report_text}/>
+            <TextWithLinkComponent link={data.presentation_url} name="Презентация"/>
           </div>
         </div>
 
@@ -93,3 +94,18 @@ export class SingleReportComponent extends React.Component<any, ISingleState> {
   }
 
 }
+
+const getEmployeesList = (employees: IEmployee[], icon: string, isManager = false) =>
+{
+  const i = `fa ${icon}`;
+  return employees.map(e =>
+  {
+    return (
+      <li key={e.id} className="list-group-item pl-0">
+        {isManager ? <b>Руководитель: </b> : ""}
+        <i className={i}/> {e.full_name}
+        <span className="text-muted"> <i className="fa fa-shield" /> {e.position}</span>
+      </li>
+    )
+  })
+};

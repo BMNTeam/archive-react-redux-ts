@@ -8,7 +8,7 @@ interface ICardProps {
     authors: IEmployee[];
     id: number
     name: string;
-    shortText: string;
+    text: string;
     type: ISearchDataType;
 }
 class CardComponent extends React.Component<ICardProps>
@@ -31,7 +31,7 @@ class CardComponent extends React.Component<ICardProps>
                 <h5 className="card-title">
                     <Link to={`/single/${this.props.type}/${this.props.id}`}>{this.props.name}</Link>
                     </h5>
-                <p className="card-text">{this.props.shortText}</p>
+                <p className="card-text">{this.props.text}</p>
             </div>
                 <br/>
 

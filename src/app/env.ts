@@ -4,6 +4,7 @@ export const env = {
         articles: 'api/articles',
         employees: 'api/employees',
         journals: 'api/journals',
+        references: 'api/references',
         reports: 'api/reports',
         search: 'api/search',
         singleSearch: 'api/search/single'

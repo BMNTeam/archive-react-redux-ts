@@ -33,6 +33,16 @@ declare namespace Models
             shortReport: File;
             themeNumber: string;
         }
+
+        interface IReference {
+            id?: number;
+            date: string;
+            employees: number[];
+            manager: number;
+            name: string;
+            text: File;
+            themeNumber: string;
+        }
     }
     
 
@@ -42,6 +52,7 @@ declare namespace Models
             date: string;
             employees: IEmployee[];
             id: string;
+            manager: IEmployee;
             full_report_text: string;
             full_report_url: string;
             manager_id: string;
@@ -85,7 +96,7 @@ declare namespace Search
     type ISearchDataType = "report" | "reference";
     interface ISearchData {
         authors: IEmployee[];
-        short_report_text: string;
+        text: string;
         id: number;
         name: string;
         type: ISearchDataType;
