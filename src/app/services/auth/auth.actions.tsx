@@ -43,7 +43,12 @@ export const loginUser = (data: IAuthentication) => {
             const res = await axios.post<IOAuthToken>(`${env.url}oauth/token`, req);
             if (res.status !== 200) { throw new Error()};
             dispatch({type: LOGIN_SUCCESS, payload: ""});
-            localStorage.setItem(ACCESS_TOKEN, res.data.access_token);
+            const token = res.data.access_token;
+            localStorage.setItem(ACCESS_TOKEN, token);
+            // TODO: find better solution maybe move it to const or exported function
+            /* tslint:disable */
+            axios.defaults.headers['Authorization'] = `Bearer ${token}`;
+            /* tslint:enable */
 
             getUserCredentials(data.email, res.data.access_token);
             history.push('/search');

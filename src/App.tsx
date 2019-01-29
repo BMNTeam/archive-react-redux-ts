@@ -6,7 +6,7 @@ import './App.scss';
 import AppComponent from "./app/AppComponent";
 import LoginComponent from "./app/structure/login/LoginComponent";
 
-import "./app/services/axious.defaultHeaders";
+
 import history from './app/shared/history';
 import {PrivateRoute} from "./app/shared/routes";
 import store from "./app/store";

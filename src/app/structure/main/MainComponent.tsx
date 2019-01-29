@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Route} from "react-router";
+import "../../../app/services/axious.defaultHeaders";
 import ArticleComponent from "./admin/components/ArticleComponent";
 import EmployeesComponent from "./admin/components/EmployeesComponent";
 import JournalComponent from "./admin/components/JournalComponent";
