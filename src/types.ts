@@ -89,11 +89,11 @@ declare namespace Search
 
     interface ISearchRequest {
         value: string;
-        type: 'report' | 'reference';
+        type?: ISearchDataType;
 
     }
 
-    type ISearchDataType = "report" | "reference";
+    type ISearchDataType = "report" | "reference" | "all";
     interface ISearchData {
         authors: IEmployee[];
         text: string;
