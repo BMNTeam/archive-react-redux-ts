@@ -3,6 +3,7 @@ export const env = {
     endpoints: {
         articles: 'api/articles',
         employees: 'api/employees',
+        files: 'api/download',
         journals: 'api/journals',
         references: 'api/references',
         reports: 'api/reports',

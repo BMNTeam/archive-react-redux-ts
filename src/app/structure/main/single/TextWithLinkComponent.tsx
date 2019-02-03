@@ -1,4 +1,5 @@
 import * as React from "react";
+import {env} from "../../../env";
 
 interface ITextWithLinkProps {
   link: string;
@@ -37,7 +38,7 @@ export class TextWithLinkComponent extends React.Component<ITextWithLinkProps, {
       <div className="row mb-2">
         <div className="col-md-6"><b>{this.props.name}</b></div>
         <div className="col-md-6 text-right">
-          <a href={this.props.link}>
+          <a href={`${env.url}${env.endpoints.files}/?file=${this.props.link}`} target="_blank">
             <button title="Загрузить" className="btn btn-link"><i className="fa fa-download"/></button>
           </a>
         </div>
