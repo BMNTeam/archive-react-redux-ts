@@ -62,6 +62,18 @@ declare namespace Models
             short_report_url: string;
             theme_number: string;
         }
+
+        interface IReference {
+            articles: IArticle[];
+            date: string;
+            employees: IEmployee[];
+            id: string;
+            manager: IEmployee;
+            name: string;
+            text: string;
+            theme_number: string;
+            url: string;
+        }
         
         interface IEmployee {
             id: number;
