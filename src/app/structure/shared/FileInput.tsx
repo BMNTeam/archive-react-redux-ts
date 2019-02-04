@@ -44,4 +44,5 @@ class FileInput extends React.Component<WrappedFieldWithPlaceholder, HTMLInputEl
     }
 }
 
-export default FileInput;
+// TODO: get rid of any
+export default FileInput as any;
