@@ -30,27 +30,29 @@ class LoginComponent extends React.Component<InjectedFormProps & {loginUser: (va
     {
         const { pristine, handleSubmit } = this.props;
         return(
-            <div className="form-wrapper">
-                <div className="form bg-white p-4">
-                    <form onSubmit={handleSubmit(this.submit)}>
-                        <div className="form-group">
-                            <label>Email</label>
-                            <Field name="email" component="input" type="email" className="form-control" placeholder="Введите email" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Пароль</label>
-                            <Field name="password" component="input" type="password" className="form-control"
-                                   placeholder="Пароль" />
-                        </div>
+              <div className="form-wrapper">
+                  <div className="form bg-white p-4">
+                      <h3>Авторизация</h3>
 
-                        <p className={ !this.props.errorMessage ? 'invisible text-danger' : 'text-danger'} role="alert">
-                          Неверное имя пользователя или пароль
-                        </p>
-                        <button disabled={pristine} type="submit" className="btn btn-primary float-right">Войти</button>
-                    </form>
+                      <form onSubmit={handleSubmit(this.submit)}>
+                          <div className="form-group">
+                              <label>Email</label>
+                              <Field name="email" component="input" type="email" className="form-control" placeholder="Введите email" />
+                          </div>
+                          <div className="form-group">
+                              <label htmlFor="exampleInputPassword1">Пароль</label>
+                              <Field name="password" component="input" type="password" className="form-control"
+                                     placeholder="Пароль" />
+                          </div>
 
-                </div>
-            </div>
+                          <p className={ !this.props.errorMessage ? 'invisible text-danger' : 'text-danger'} role="alert">
+                              Неверное имя пользователя или пароль
+                          </p>
+                          <button disabled={pristine} type="submit" className="btn btn-primary float-right">Войти</button>
+                      </form>
+
+                  </div>
+              </div>
         );
     }
 }

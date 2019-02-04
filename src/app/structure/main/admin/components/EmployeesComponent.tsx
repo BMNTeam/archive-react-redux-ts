@@ -40,7 +40,6 @@ class EmployeesComponent extends React.Component<InjectedFormProps> {
 
                 <div className="header">
                     <h2>Добавление сотрудника</h2>
-                    <br/>
                 </div>
 
                 <div className="form">

@@ -26,7 +26,10 @@ $fa-font-path: "~font-awesome/fonts";
 {
   height: inherit;
   overflow: hidden;
-  background-image: linear-gradient(to top, gray , lightgray, white);
+  background-image: url("app/structure/main/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  //filter: blur(8px);
 }
 .App-intro {
   font-size: large;
@@ -53,6 +56,10 @@ html, body {
 {
   position: relative;
 }
+
+$primary:    #FFA000 !default;
+$secondary:    black !default;
+$headings-line-height:        2.2 !default;
 $custom-file-text: (
         en: "Загрузить"
 );

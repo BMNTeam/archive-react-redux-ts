@@ -68,7 +68,6 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
 
                 <div className="header">
                     <h2>Добавление отчета</h2>
-                    <br/>
                 </div>
 
                 <div className="form">

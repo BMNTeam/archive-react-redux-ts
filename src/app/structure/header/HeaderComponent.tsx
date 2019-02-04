@@ -6,6 +6,7 @@ import {logoutUser} from "../../services/auth/auth.actions";
 import {IAction} from "../../shared/types";
 import {IState} from "../../store";
 import {DropdownMenu} from "./DropdownAddMenu";
+import "./header-component.scss";
 
 class Header extends React.Component<{logoutUser: () => undefined, node: HTMLElement}, any> {
     constructor(props: any)
@@ -29,14 +30,14 @@ class Header extends React.Component<{logoutUser: () => undefined, node: HTMLEle
     {
         return (
             <div
-                className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
+                className="toolbar d-flex flex-column flex-md-row align-items-center p-3 px-md-4 shadow-sm">
                 <h5 className="my-0 mr-md-auto font-weight-normal">СНИИСХ</h5>
 
                 <nav className="navbar navbar-expand-lg my-2 my-md-0 mr-md-3">
                     <ul className="navbar-nav ">
-                        <li className="nav-item"><Link to="/search" className="p-2 text-dark">Поиск</Link></li>
+                        <li className="nav-item"><Link to="/search" className="p-2">Поиск</Link></li>
                         <li className="nav-item dropdown">
-                            <a className="p-2 text-dark dropdown-toggle" onClick={() => this.toggleDropdown()} role="button"
+                            <a className="p-2 dropdown-toggle" onClick={() => this.toggleDropdown()} role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Добавить
                             </a>

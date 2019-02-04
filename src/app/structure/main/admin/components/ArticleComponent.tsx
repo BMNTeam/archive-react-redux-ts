@@ -67,7 +67,6 @@ class ArticleComponent extends React.Component<InjectedFormProps, {
 
                 <div className="header">
                     <h2>Добавление статьи</h2>
-                    <br/>
                 </div>
 
                 <div className="form">
