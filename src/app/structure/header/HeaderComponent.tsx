@@ -1,6 +1,6 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {ThunkDispatch} from "redux-thunk";
 import {logoutUser} from "../../services/auth/auth.actions";
 import {IAction} from "../../shared/types";
@@ -8,7 +8,7 @@ import {IState} from "../../store";
 import {DropdownMenu} from "./DropdownAddMenu";
 import "./header-component.scss";
 
-class Header extends React.Component<{logoutUser: () => undefined, node: HTMLElement}, any> {
+class Header extends React.Component<{logoutUser(): void}, any> {
     constructor(props: any)
     {
         super(props);
@@ -30,7 +30,7 @@ class Header extends React.Component<{logoutUser: () => undefined, node: HTMLEle
     {
         return (
             <div
-                className="toolbar d-flex flex-column flex-md-row align-items-center p-3 px-md-4 shadow-sm">
+                className="toolbar d-flex flex-column flex-md-row align-items-center p-2 px-md-4 shadow-sm">
                 <h5 className="my-0 mr-md-auto font-weight-normal">СНИИСХ</h5>
 
                 <nav className="navbar navbar-expand-lg my-2 my-md-0 mr-md-3">
@@ -57,4 +57,4 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<IState, null, IAction<string
 
 
 
-export default connect(null, mapDispatchToProps)(Header);
+export default withRouter(connect(null, mapDispatchToProps)(Header) as any);
