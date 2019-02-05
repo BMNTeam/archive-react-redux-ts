@@ -1,11 +1,12 @@
 import axious from "axios";
 import * as React from "react";
 import {env} from "../../../env";
+import {TitleComponent} from "../../../shared/title/title.component";
 import {TextWithLinkComponent} from "./TextWithLinkComponent";
-import IReport = Models.Server.IReport;
-import ISearchDataType = Search.ISearchDataType;
 import IEmployee = Models.Server.IEmployee;
 import IReference = Models.Server.IReference;
+import IReport = Models.Server.IReport;
+import ISearchDataType = Search.ISearchDataType;
 
 interface ISingleState {
   data?: IReport | IReference
@@ -36,9 +37,10 @@ export class SingleReportComponent extends React.Component<any, ISingleState> {
     const date = new Date(+this.state.data.date * 1000);
     return (
       <div>
+        <TitleComponent text={data.name}/>
         <div className="row">
           <div className="col-md-12">
-            <h2>{this.state.data.name}</h2>
+
             <h5>№: {this.state.data.theme_number}</h5>
           </div>
         </div>

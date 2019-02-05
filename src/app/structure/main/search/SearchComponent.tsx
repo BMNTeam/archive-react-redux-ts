@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {ThunkDispatch} from "redux-thunk";
 import {search} from "../../../services/search/search.actions";
+import {TitleComponent} from "../../../shared/title/title.component";
 import {IAction} from "../../../shared/types";
 import {IState} from "../../../store";
 import CardComponent from "./CardComponent";
@@ -44,7 +45,7 @@ class SearchComponent extends React.Component<InjectedFormProps & ISearchProps, 
         const {reports} = this.props;
         return (
             <div>
-                <h3>Поиск</h3>
+                <TitleComponent text={'Поиск'} icon="fa-search"/>
                 <form onSubmit={this.props.handleSubmit(this.submit)}>
                     <div className="input-group mb-3 mt-3">
                         <br/>

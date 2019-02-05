@@ -4,6 +4,7 @@ import Select from "react-select";
 import {OptionsType} from "react-select/lib/types";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {env} from "../../../../env";
+import {TitleComponent} from "../../../../shared/title/title.component";
 import FileInput from "../../../shared/FileInput";
 import {renderFormField} from "../../../shared/RenderFormField";
 import "./form-component.scss";
@@ -66,11 +67,9 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
         return (
             <form action="" onSubmit={handleSubmit((e: Models.Client.INewReport) => this.submit(e))} className="report-form">
 
-                <div className="header">
-                    <h2>Добавление отчета</h2>
-                </div>
-
                 <div className="form">
+                    <TitleComponent text={"Добавление отчета"} icon="fa-newspaper-o"/>
+
                     <h5>Основная информация</h5>
 
                     <div className="row">

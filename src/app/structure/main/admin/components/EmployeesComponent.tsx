@@ -2,6 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {env} from "../../../../env";
+import {TitleComponent} from "../../../../shared/title/title.component";
 import {renderFormField} from "../../../shared/RenderFormField";
 import "./form-component.scss";
 
@@ -38,11 +39,8 @@ class EmployeesComponent extends React.Component<InjectedFormProps> {
         return (
             <form action="" onSubmit={handleSubmit((e: IEmployee) => this.submit(e))} className="report-form">
 
-                <div className="header">
-                    <h2>Добавление сотрудника</h2>
-                </div>
-
                 <div className="form">
+                    <TitleComponent text="Добавление сотрудника" icon="fa-user-plus"/>
                     <div className="row">
                         <div className="col-md-6">
                             <div className="form-group">

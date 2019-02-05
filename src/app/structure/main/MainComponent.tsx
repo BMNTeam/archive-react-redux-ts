@@ -20,7 +20,7 @@ class MainComponent extends React.Component<{noContainer: boolean, changeContain
     public render()
     {
         let classes = 'bg-white full-screen-height';
-        classes = this.props.noContainer ? `${classes} p-3` : `${classes} container`;
+        classes = this.props.noContainer ? `${classes} pl-3 pr-3` : `${classes} container`;
         return (
             <div className="content">
                <div className={classes}>
