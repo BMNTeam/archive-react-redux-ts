@@ -1,0 +1,46 @@
+@import "../../../variables";
+
+$color: #212121;
+@function makelongshadow($color, $amount) {
+  $val: 0px 0px $color;
+  @for $i from 1 through $amount {
+    $val: $val,#{$i}px #{$i+2}px 1px lighten($color,$i+30);
+  }
+  @return $val;
+}
+
+@mixin longshadow($color, $amount: 15) {
+  text-shadow: makelongshadow($color, $amount);
+}
+
+.header {
+  //background-color: red;
+  overflow: hidden;
+  display: flex;
+  height: 100px;
+}
+
+
+
+h2 {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
+  transition: all .3s ease;
+  &.elegantshadow {
+    color: #131313;
+    background: linear-gradient(to bottom, #ccc, white);
+    letter-spacing: .15em;
+    &:hover {
+      color: $primary;
+      @include longshadow($color, 5);
+      i{
+        @include longshadow($color);
+      }
+    }
+
+    @include longshadow($color);
+  }
+}
