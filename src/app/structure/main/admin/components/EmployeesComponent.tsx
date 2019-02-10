@@ -2,6 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {env} from "../../../../env";
+import {CategoryImageComponent} from "../../../../shared/category-image/category-image.component";
 import {TitleComponent} from "../../../../shared/title/title.component";
 import {renderFormField} from "../../../shared/RenderFormField";
 import "./form-component.scss";
@@ -42,21 +43,23 @@ class EmployeesComponent extends React.Component<InjectedFormProps> {
                 <div className="form">
                     <TitleComponent text="Добавление сотрудника" icon="fa-user-plus"/>
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-md-4">
+                            <CategoryImageComponent icon="fa-user-secret"/>
+
+
+                        </div>
+                        <div className="col-md-8">
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlInput1">Ф.И.О.</label>
                                 <Field
-                                    component={renderFormField}
-                                    name="name"
-                                    type="text"
-                                    required={true}
-                                    placeholder="Например: Иванов Иван Иванович"
-                                    validate={[required]}
-                                    className="form-control"/>
+                                  component={renderFormField}
+                                  name="name"
+                                  type="text"
+                                  required={true}
+                                  placeholder="Например: Иванов Иван Иванович"
+                                  validate={[required]}
+                                  className="form-control"/>
                             </div>
-
-                        </div>
-                        <div className="col-md-6">
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlInput1">Степень</label>
                                 <Field

@@ -4,6 +4,7 @@ import Select from "react-select";
 import {OptionsType, } from "react-select/lib/types";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {env} from "../../../../env";
+import {CategoryImageComponent} from "../../../../shared/category-image/category-image.component";
 import {TitleComponent} from "../../../../shared/title/title.component";
 import FileInput from "../../../shared/FileInput";
 import {renderFormField} from "../../../shared/RenderFormField";
@@ -70,21 +71,21 @@ class ArticleComponent extends React.Component<InjectedFormProps, {
                     <TitleComponent text="Добавление статьи" icon="fa-wpforms "/>
                     <h5>Основная информация</h5>
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-md-4">
+                            <CategoryImageComponent icon="fa-wpforms"/>
+                        </div>
+                        <div className="col-md-8">
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlInput1">Название</label>
                                 <Field
-                                    component={renderFormField}
-                                    name="name"
-                                    type="text"
-                                    required={true}
-                                    placeholder="Например: Основы экономики"
-                                    validate={[required]}
-                                    className="form-control"/>
+                                  component={renderFormField}
+                                  name="name"
+                                  type="text"
+                                  required={true}
+                                  placeholder="Например: Основы экономики"
+                                  validate={[required]}
+                                  className="form-control"/>
                             </div>
-
-                        </div>
-                        <div className="col-md-6">
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlInput1">Авторы</label>
                                 <Field component={props =>

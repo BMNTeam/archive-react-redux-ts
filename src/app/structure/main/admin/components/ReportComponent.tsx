@@ -4,6 +4,7 @@ import Select from "react-select";
 import {OptionsType} from "react-select/lib/types";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {env} from "../../../../env";
+import {CategoryImageComponent} from "../../../../shared/category-image/category-image.component";
 import {TitleComponent} from "../../../../shared/title/title.component";
 import FileInput from "../../../shared/FileInput";
 import {renderFormField} from "../../../shared/RenderFormField";
@@ -73,54 +74,77 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
                     <h5>Основная информация</h5>
 
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-md-4">
+                            <CategoryImageComponent icon="fa-pencil"/>
+                        </div>
+                        <div className="col-md-8">
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlInput1">Название отчета</label>
                                 <Field
-                                    component={renderFormField}
-                                    name="name"
-                                    type="text"
-                                    required={true}
-                                    placeholder="Введите название отчета"
-                                    validate={[required]}
-                                    className="form-control"/>
+                                  component={renderFormField}
+                                  name="name"
+                                  type="text"
+                                  required={true}
+                                  placeholder="Введите название отчета"
+                                  validate={[required]}
+                                  className="form-control"/>
                             </div>
 
                             <div className="form-group">
                                 <label>Номер темы из темплана</label>
                                 <Field
-                                    component={renderFormField}
-                                    name="theme_number"
-                                    type="text"
-                                    required={true}
-                                    placeholder="Например: 12"
-                                    validate={[required]}
-                                    className="form-control"/>
+                                  component={renderFormField}
+                                  name="theme_number"
+                                  type="text"
+                                  required={true}
+                                  placeholder="Например: 12"
+                                  validate={[required]}
+                                  className="form-control"/>
                             </div>
+
+                            <div className="form-group">
+                                <label>Научные работы</label>
+                                <Field component={props =>
+                                  <Select
+                                    value={props.input.value}
+                                    onChange={props.input.onChange}
+                                    options={this.state.articles}
+                                    isMulti={true}
+                                    placeholder="Выбрать"
+                                  />}
+                                       name="articles"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-md-4">
 
                             <div className="form-group">
                                 <label>Дата</label>
                                 <Field
-                                    component={renderFormField}
-                                    type="date"
-                                    name="date"
-                                    required={true}
-                                    validate={[required]}
-                                    className="form-control"/>
+                                  component={renderFormField}
+                                  type="date"
+                                  name="date"
+                                  required={true}
+                                  validate={[required]}
+                                  className="form-control"/>
                             </div>
 
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-8">
+
                             <div className="form-group">
                                 <label>Руководитель</label>
                                 <Field component={props =>
-                                    <Select
-                                        value={props.input.value}
-                                        onChange={props.input.onChange}
-                                        options={this.state.employees}
-                                        isMulti={false}
-                                        placeholder="Выбрать"
-                                    />}
+                                  <Select
+                                    value={props.input.value}
+                                    onChange={props.input.onChange}
+                                    options={this.state.employees}
+                                    isMulti={false}
+                                    placeholder="Выбрать"
+                                  />}
                                        name="manager"
                                 />
                                 {/*
@@ -136,13 +160,13 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
                             <div className="form-group">
                                 <label>Исполнители</label>
                                 <Field component={props =>
-                                    <Select
-                                        value={props.input.value}
-                                        onChange={props.input.onChange}
-                                        options={this.state.employees}
-                                        isMulti={true}
-                                        placeholder="Выбрать"
-                                    />
+                                  <Select
+                                    value={props.input.value}
+                                    onChange={props.input.onChange}
+                                    options={this.state.employees}
+                                    isMulti={true}
+                                    placeholder="Выбрать"
+                                  />
                                 }
                                        name="employees"
                                 />
@@ -156,22 +180,10 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
                                     */}
 
                             </div>
-                            <div className="form-group">
-                                <label>Научные работы</label>
-                                <Field component={props =>
-                                    <Select
-                                        value={props.input.value}
-                                        onChange={props.input.onChange}
-                                        options={this.state.articles}
-                                        isMulti={true}
-                                        placeholder="Выбрать"
-                                    />}
-                                       name="articles"
-                                />
-                            </div>
-                        </div>
-                    </div>
 
+                        </div>
+
+                    </div>
                     <br/>
                     <h5>Файлы</h5>
                     <div className="row">

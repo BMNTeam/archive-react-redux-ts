@@ -2,6 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {env} from "../../../../env";
+import {CategoryImageComponent} from "../../../../shared/category-image/category-image.component";
 import {TitleComponent} from "../../../../shared/title/title.component";
 import {renderFormField} from "../../../shared/RenderFormField";
 import "./form-component.scss";
@@ -36,21 +37,22 @@ class JournalComponent extends React.Component<InjectedFormProps> {
                 <div className="form">
                     <TitleComponent text="Добавление журнала" icon="fa-quote-right"/>
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-md-4">
+                            <CategoryImageComponent icon="fa-graduation-cap"/>
+
+                        </div>
+                        <div className="col-md-8">
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlInput1">Название</label>
                                 <Field
-                                    component={renderFormField}
-                                    name="name"
-                                    type="text"
-                                    required={true}
-                                    placeholder="Например: Основы экономики"
-                                    validate={[required]}
-                                    className="form-control"/>
+                                  component={renderFormField}
+                                  name="name"
+                                  type="text"
+                                  required={true}
+                                  placeholder="Например: Основы экономики"
+                                  validate={[required]}
+                                  className="form-control"/>
                             </div>
-
-                        </div>
-                        <div className="col-md-6">
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlInput1">Ссылка на страницу в elibrary</label>
                                 <Field

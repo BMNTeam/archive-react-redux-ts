@@ -82,9 +82,16 @@ declare namespace Models
             position: string;
         }
 
+        interface IJournal {
+            name: string;
+            id: string;
+            url: string;
+        }
+
         interface IArticle {
             id: number;
             full_text: string;
+            journal: IJournal;
             journal_id: number;
             link: string;
             name: string;
