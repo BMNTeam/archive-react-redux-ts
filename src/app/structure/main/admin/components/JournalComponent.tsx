@@ -1,21 +1,41 @@
+import axious from "axios";
 import * as React from "react";
 import {connect} from "react-redux";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {env} from "../../../../env";
 import {CategoryImageComponent} from "../../../../shared/category-image/category-image.component";
+import {
+    getDefaultNotification,
+    INotification,
+    Nofification,
+    NotificationType
+} from "../../../../shared/notifications.component";
 import {TitleComponent} from "../../../../shared/title/title.component";
 import {renderFormField} from "../../../shared/RenderFormField";
-import "./form-component.scss";
-
-import axious from "axios";
 import {required} from "../../../shared/Validations";
+import {ExistingData} from "./existing-data.component";
+import "./form-component.scss";
+import IJournal = Models.Server.IJournal;
 
+interface IJournalState {
+    journals?: IJournal[];
+    notification: INotification;
+}
 
-class JournalComponent extends React.Component<InjectedFormProps> {
+class JournalComponent extends React.Component<InjectedFormProps, IJournalState> {
 
     constructor(props: InjectedFormProps)
     {
         super(props);
+        this.state = {
+            journals: undefined,
+            notification: getDefaultNotification()
+        }
+    }
+
+    public componentWillMount(): void
+    {
+        this.getData();
     }
 
     public async submit(data: Models.Client.IJournal)
@@ -23,6 +43,7 @@ class JournalComponent extends React.Component<InjectedFormProps> {
         const r = await axious.post(`${env.url}${env.endpoints.journals}`, data);
         if (r.status === 200)
         {
+            this.setState({...this.state, notification: {type: NotificationType.Success, text: "Журнал успешно добавлен"}})
             this.props.reset();
         }
     }
@@ -67,6 +88,13 @@ class JournalComponent extends React.Component<InjectedFormProps> {
 
                         </div>
                     </div>
+                    <ExistingData heading="Загруженные журналы" data={
+                        this.state.journals
+                          ? getJournalsTable(this.state.journals)
+                          : undefined
+                    }/>
+                    <Nofification type={this.state.notification.type} text={this.state.notification.text}/>
+
                 </div>
 
                 <div className="footer">
@@ -84,7 +112,38 @@ class JournalComponent extends React.Component<InjectedFormProps> {
 
     }
 
+    private async getData()
+    {
+        const res = await axious.get(`${env.url}/${env.endpoints.journals}`);
+        this.setState({...this.state, journals: res.data})
+    }
+
 }
+
+export const getJournalsTable = (articles: IJournal[]) => (
+  <div>
+      <table className="table table-hover">
+          <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Названия</th>
+              <th scope="col">Ссылка</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          {articles.map((j, i) => (
+            <tr key={j.id}>
+                <td>{++i}</td>
+                <td>{j.name}</td>
+                <td>{j.url}</td>
+            </tr>
+          ))}
+          </tbody>
+      </table>
+  </div>
+
+);
 
 const reduxF = reduxForm({
     form: 'reduxF'

@@ -3,12 +3,13 @@ import * as React from "react";
 import {env} from "../../../env";
 import {CategoryImageComponent} from "../../../shared/category-image/category-image.component";
 import {TitleComponent} from "../../../shared/title/title.component";
+import {getArticlesTable} from "../admin/components/ArticleComponent";
+import {getEmployesTable} from "../admin/components/EmployeesComponent";
 import {TextWithLinkComponent} from "./TextWithLinkComponent";
 import IEmployee = Models.Server.IEmployee;
 import IReference = Models.Server.IReference;
 import IReport = Models.Server.IReport;
 import ISearchDataType = Search.ISearchDataType;
-import IArticle = Models.Server.IArticle;
 
 interface ISingleState {
   data?: IReport | IReference
@@ -111,62 +112,8 @@ const getReferenceFile = (data: IReference) => (
   </div>
 );
 
-const getEmployesTable = (emp: IEmployee[], manager: IEmployee) => (
-  <table className="table table-hover">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Ф.И.О</th>
-      <th scope="col">Должность</th>
-      <th scope="col">Звание</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>1</td>
-      <td>{manager.full_name}</td>
-      <td>{manager.position}</td>
-      <td>{manager.degree}</td>
-    </tr>
-    {emp.map((e, i) => (
-      <tr key={e.id}>
-        <td>{i + 2}</td>
-        <td>{e.full_name}</td>
-        <td>{e.position}</td>
-        <td>{e.degree}</td>
-      </tr>
-    ))}
-    </tbody>
-  </table>
-);
 
-const getArticlesTable = (articles: IArticle[]) => (
-  <div>
-    <h5>Список статей</h5>
-    <table className="table table-hover">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Название</th>
-        <th scope="col">Журнал</th>
-        <th scope="col">Действия</th>
-      </tr>
-      </thead>
-      <tbody>
 
-      {articles.map((a, i) => (
-        <tr key={a.id}>
-          <td>{++i}</td>
-          <td>{a.name}</td>
-          <td>{a.journal.name}</td>
-          <td><a href={`${env.url}${env.endpoints.files}/?file=${a.link}`}>Скачать</a></td>
-        </tr>
-      ))}
-      </tbody>
-    </table>
-  </div>
-
-);
 const getManager = (m: IEmployee, icon: string) =>
 {
   const i = `fa ${icon}`;

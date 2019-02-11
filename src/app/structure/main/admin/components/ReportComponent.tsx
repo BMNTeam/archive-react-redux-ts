@@ -1,3 +1,4 @@
+import axious from "axios";
 import * as React from "react";
 import {connect} from "react-redux";
 import Select from "react-select";
@@ -5,19 +6,24 @@ import {OptionsType} from "react-select/lib/types";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {env} from "../../../../env";
 import {CategoryImageComponent} from "../../../../shared/category-image/category-image.component";
+import {
+    getDefaultNotification,
+    INotification,
+    Nofification,
+    NotificationType
+} from "../../../../shared/notifications.component";
 import {TitleComponent} from "../../../../shared/title/title.component";
 import FileInput from "../../../shared/FileInput";
 import {renderFormField} from "../../../shared/RenderFormField";
-import "./form-component.scss";
-
-import axious from "axios";
 import {required} from "../../../shared/Validations";
 import {AdminService} from "../admin-service";
 import {getAsFormData} from "../admin-shared";
+import "./form-component.scss";
 
 interface IOpitons {
-    articles: OptionsType<number>,
-    employees: OptionsType<number>
+    articles: OptionsType<number>;
+    employees: OptionsType<number>;
+    notification: INotification;
 }
 
 class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
@@ -26,7 +32,8 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
         super(props);
         this.state = {
             articles: [],
-            employees: []
+            employees: [],
+            notification: getDefaultNotification()
         }
     }
 
@@ -50,12 +57,18 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
     public async submit(data: Models.Client.INewReport)
     {
         const formData = getAsFormData<Models.Client.INewReport>(data);
-        await axious.post(`${env.url}${env.endpoints.reports}`, formData, {
+        const res = await axious.post(`${env.url}${env.endpoints.reports}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data;'
             }
         });
-        this.props.reset();
+        if(res.status === 200)
+        {
+            this.setState({...this.state, notification: {type: NotificationType.Success, text: "Отчет успешно добавлен"}});
+            this.props.reset();
+            return;
+        }
+        this.setState({...this.state, notification: {type: NotificationType.Error, text: "Во время добавления отчета произошла ошибка"}});
 
     }
 
@@ -75,7 +88,7 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
 
                     <div className="row">
                         <div className="col-md-4">
-                            <CategoryImageComponent icon="fa-pencil"/>
+                            <CategoryImageComponent icon="fa-address-card"/>
                         </div>
                         <div className="col-md-8">
                             <div className="form-group">
@@ -223,6 +236,7 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
                             <p className="small text-muted">* Все поля обязательны для заполнения</p>
                         </div>
                     </div>
+                    <Nofification type={this.state.notification.type} text={this.state.notification.text}/>
                 </div>
 
                 <div className="footer">
