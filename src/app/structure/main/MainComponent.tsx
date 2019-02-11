@@ -29,13 +29,13 @@ class MainComponent extends React.Component<{noContainer: boolean, changeContain
                           <i className="fa fa-navicon" />
                        </button>
                    </div>
-                   <Route path="/search" component={SearchComponent} />
                    <Route path="/admin" component={ReportComponent} />
                    <Route path="/reference" component={ReferenceComponent} />
                    <Route path="/employees" component={EmployeesComponent} />
                    <Route path="/article" component={ArticleComponent} />
                    <Route path="/journal" component={JournalComponent} />
                    <Route path="/single/:type/:id" component={SingleReportComponent} />
+                   <Route path="/" component={SearchComponent} exact={true}/>
                </div>
             </div>
         )

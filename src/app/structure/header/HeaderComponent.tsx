@@ -35,7 +35,7 @@ class Header extends React.Component<{logoutUser(): void}, any> {
 
                 <nav className="navbar navbar-expand-lg my-2 my-md-0 mr-md-3">
                     <ul className="navbar-nav ">
-                        <li className="nav-item"><Link to="/search" className="p-2">Поиск</Link></li>
+                        <li className="nav-item"><Link to="/" className="p-2">Поиск</Link></li>
                         <li className="nav-item dropdown">
                             <a className="p-2 dropdown-toggle" onClick={() => this.toggleDropdown()} role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
