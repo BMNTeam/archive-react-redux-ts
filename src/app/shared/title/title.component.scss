@@ -30,17 +30,16 @@ h2 {
   text-rendering: optimizeLegibility;
   transition: all .3s ease;
   &.elegantshadow {
-    color: #131313;
     background: linear-gradient(to bottom, #ccc, white);
     letter-spacing: .15em;
+    color: $primary;
+    @include longshadow($color, 5);
+    i{
+      @include longshadow($color);
+    }
     &:hover {
-      color: $primary;
-      @include longshadow($color, 5);
-      i{
-        @include longshadow($color);
-      }
+
     }
 
-    @include longshadow($color);
   }
 }
