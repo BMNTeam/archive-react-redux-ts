@@ -23,8 +23,7 @@ $fa-font-path: "~font-awesome/fonts";
 }
 
 
-.main-container
-{
+.main-container {
   height: inherit;
   overflow: hidden;
   background-image: url("app/structure/main/background.jpg");
@@ -32,6 +31,7 @@ $fa-font-path: "~font-awesome/fonts";
   background-size: cover;
   //filter: blur(8px);
 }
+
 .App-intro {
   font-size: large;
 }
@@ -40,26 +40,28 @@ $fa-font-path: "~font-awesome/fonts";
   height: inherit;
 }
 
+.select-fix {
+  z-index: 2;
+}
+
 html, body {
   height: 100%;
 
 }
 
 
-.invalid-feedback
-{
+.invalid-feedback {
   position: absolute;
   font-size: .65rem;
   line-height: .7rem;
 }
 
-.form-group
-{
+.form-group {
   position: relative;
 }
 
 
-$headings-line-height:        2.2 !default;
+$headings-line-height: 2.2 !default;
 $custom-file-text: (
         en: "Загрузить"
 );
