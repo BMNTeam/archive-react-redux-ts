@@ -44,7 +44,10 @@ class EmployeesComponent extends React.Component<InjectedFormProps, IEmployeesSt
     const r = await axious.post(`${env.url}${env.endpoints.employees}`, data);
     if (r.status === 200)
     {
-      this.setState({...this.state, notification: {type: NotificationType.Success, text: "Сотрудник успешно добавлен"}});
+      this.setState({...this.state,
+        employees: this.state.employees && this.state.employees.concat(r.data) || undefined,
+        notification: {type: NotificationType.Success, text: "Сотрудник успешно добавлен"}
+      });
       this.props.reset();
     }
   }
@@ -83,7 +86,7 @@ class EmployeesComponent extends React.Component<InjectedFormProps, IEmployeesSt
                   name="degree"
                   type="text"
                   required={true}
-                  placeholder="Например: доцент"
+                  placeholder="Например: кандидат сельскохозяйственных наук"
                   validate={[required]}
                   className="form-control"/>
               </div>
@@ -148,14 +151,14 @@ export const getEmployesTable = (emp: IEmployee[], manager?: IEmployee) => (
     </thead>
     <tbody>
     {
-      !!manager
-        ? <tr>
+      manager &&
+         <tr>
           <td>1</td>
           <td>{manager.full_name}</td>
           <td>{manager.position}</td>
           <td>{manager.degree}</td>
         </tr>
-        : ""
+
     }
     {emp.map((e, i) => (
       <tr key={e.id}>

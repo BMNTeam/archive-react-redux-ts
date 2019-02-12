@@ -43,7 +43,9 @@ class JournalComponent extends React.Component<InjectedFormProps, IJournalState>
         const r = await axious.post(`${env.url}${env.endpoints.journals}`, data);
         if (r.status === 200)
         {
-            this.setState({...this.state, notification: {type: NotificationType.Success, text: "Журнал успешно добавлен"}})
+            this.setState({...this.state,
+                journals: this.state.journals && this.state.journals.concat(r.data) || undefined,
+                notification: {type: NotificationType.Success, text: "Журнал успешно добавлен"}})
             this.props.reset();
         }
     }

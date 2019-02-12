@@ -66,6 +66,7 @@ class ArticleComponent extends React.Component<InjectedFormProps, {
     if (r.status === 200)
     {
       this.setState({...this.state,
+        articles: this.state.articles && this.state.articles.concat(r.data) || undefined,
         notification: {type: NotificationType.Success, text: "Статья успешно добавлена"}
       });
       this.props.reset();
@@ -87,7 +88,7 @@ class ArticleComponent extends React.Component<InjectedFormProps, {
             <div className="col-md-4">
               <CategoryImageComponent icon="fa-wpforms"/>
             </div>
-            <div className="col-md-8">
+            <div className="col-md-8 select-fix">
               <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Название</label>
                 <Field

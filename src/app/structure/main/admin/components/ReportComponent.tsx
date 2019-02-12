@@ -146,7 +146,7 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
                             </div>
 
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-8 select-fix">
 
                             <div className="form-group">
                                 <label>Руководитель</label>
