@@ -5,12 +5,14 @@ import {ThunkDispatch} from "redux-thunk";
 import "../../../app/services/axious.defaultHeaders";
 import {IAction} from "../../shared/types";
 import {IState} from "../../store";
+
 import {changeContainer} from "./actions/main.action";
 import ArticleComponent from "./admin/components/ArticleComponent";
 import EmployeesComponent from "./admin/components/EmployeesComponent";
 import JournalComponent from "./admin/components/JournalComponent";
 import ReferenceComponent from "./admin/components/ReferenceComponent";
 import ReportComponent from "./admin/components/ReportComponent";
+import {ReportsComponent} from "./admin/components/reports.component";
 import "./main.component.scss";
 
 import SearchComponent from "./search/SearchComponent";
@@ -30,6 +32,7 @@ class MainComponent extends React.Component<{noContainer: boolean, changeContain
                        </button>
                    </div>
                    <Route path="/admin" component={ReportComponent} />
+                   <Route path="/reports" component={ReportsComponent} />
                    <Route path="/reference" component={ReferenceComponent} />
                    <Route path="/employees" component={EmployeesComponent} />
                    <Route path="/article" component={ArticleComponent} />
