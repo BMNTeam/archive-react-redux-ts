@@ -138,7 +138,7 @@ export const getJournalsTable = (articles: IJournal[]) => (
             <tr key={j.id}>
                 <td>{++i}</td>
                 <td>{j.name}</td>
-                <td>{j.url}</td>
+                <td><a href={j.url} target="_blank">Перейти</a></td>
             </tr>
           ))}
           </tbody>
