@@ -88,9 +88,26 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
 
                     <div className="row">
                         <div className="col-md-4">
-                            <CategoryImageComponent icon="fa-address-card"/>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <CategoryImageComponent icon="fa-address-card"/>
+                                </div>
+                                <div className="col-md-12">
+                                    <div className="form-group">
+                                        <label>Дата</label>
+                                        <Field
+                                          component={renderFormField}
+                                          type="date"
+                                          name="date"
+                                          required={true}
+                                          validate={[required]}
+                                          className="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-8 select-fix">
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlInput1">Название отчета</label>
                                 <Field
@@ -128,25 +145,6 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
                                        name="articles"
                                 />
                             </div>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="col-md-4">
-
-                            <div className="form-group">
-                                <label>Дата</label>
-                                <Field
-                                  component={renderFormField}
-                                  type="date"
-                                  name="date"
-                                  required={true}
-                                  validate={[required]}
-                                  className="form-control"/>
-                            </div>
-
-                        </div>
-                        <div className="col-md-8 select-fix">
 
                             <div className="form-group">
                                 <label>Руководитель</label>
@@ -193,10 +191,10 @@ class ReportComponent extends React.Component<InjectedFormProps, IOpitons> {
                                     */}
 
                             </div>
-
                         </div>
-
                     </div>
+
+
                     <br/>
                     <h5>Файлы</h5>
                     <div className="row">
