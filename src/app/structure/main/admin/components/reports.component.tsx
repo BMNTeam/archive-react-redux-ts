@@ -65,7 +65,7 @@ const getReportsTable = (reporst: IReport[]) =>(
         <tr key={r.id}>
           <td>{++i}</td>
           <td>{r.name}</td>
-          <td>{new Date(+r.date * 1000).toDateString()}</td>
+          <td>{new Date(+r.date * 1000).getFullYear()}</td>
           <td>{r.manager.full_name}</td>
           <td><Link to={`/single/report/${r.id}`}> <i className="fa fa-sign-in"/> Перейти </Link></td>
         </tr>

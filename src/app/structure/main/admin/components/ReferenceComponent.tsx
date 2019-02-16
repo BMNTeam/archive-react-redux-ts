@@ -95,7 +95,7 @@ class ReferenceComponent extends React.Component<InjectedFormProps, IOpitons> {
                         <div className="col-md-4">
                             <CategoryImageComponent icon="fa-language"/>
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-8 select-fix">
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlInput1">Название</label>
                                 <Field
@@ -133,25 +133,6 @@ class ReferenceComponent extends React.Component<InjectedFormProps, IOpitons> {
                                        name="manager"
                                 />
                             </div>
-                        </div>
-
-                    </div>
-                    <div className="row">
-                        <div className="col-md-4">
-                            <div className="form-group">
-                                <label>Дата</label>
-                                <Field
-                                  component={renderFormField}
-                                  type="date"
-                                  name="date"
-                                  required={true}
-                                  validate={[required]}
-                                  className="form-control"/>
-                            </div>
-                        </div>
-                        <div className="col-md-8">
-
-
                             <div className="form-group">
                                 <label>Исполнители</label>
                                 <Field component={props =>
@@ -167,8 +148,21 @@ class ReferenceComponent extends React.Component<InjectedFormProps, IOpitons> {
                                 />
 
                             </div>
+
+                            <div className="form-group">
+                                <label>Дата</label>
+                                <Field
+                                  component={renderFormField}
+                                  type="date"
+                                  name="date"
+                                  required={true}
+                                  validate={[required]}
+                                  className="form-control"/>
+                            </div>
                         </div>
+
                     </div>
+
 
                     <br/>
                     <h5>Файлы</h5>

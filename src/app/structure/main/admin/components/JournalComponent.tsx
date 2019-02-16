@@ -44,7 +44,7 @@ class JournalComponent extends React.Component<InjectedFormProps, IJournalState>
         if (r.status === 200)
         {
             this.setState({...this.state,
-                journals: this.state.journals && this.state.journals.concat(r.data) || undefined,
+                journals: this.state.journals && this.state.journals.concat(r.data).reverse() || undefined,
                 notification: {type: NotificationType.Success, text: "Журнал успешно добавлен"}})
             this.props.reset();
         }

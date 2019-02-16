@@ -66,7 +66,7 @@ class ArticleComponent extends React.Component<InjectedFormProps, {
     if (r.status === 200)
     {
       this.setState({...this.state,
-        articles: this.state.articles && this.state.articles.concat(r.data) || undefined,
+        articles: this.state.articles && this.state.articles.concat(r.data).reverse() || undefined,
         notification: {type: NotificationType.Success, text: "Статья успешно добавлена"}
       });
       this.props.reset();
@@ -186,7 +186,7 @@ export const getArticlesTable = (articles: IArticle[]) => (
       <tr>
         <th scope="col">#</th>
         <th scope="col">Название</th>
-        <th scope="col">Журнал</th>
+        {/*<th scope="col">Журнал</th>*/}
         <th scope="col">Действия</th>
       </tr>
       </thead>
@@ -196,7 +196,7 @@ export const getArticlesTable = (articles: IArticle[]) => (
         <tr key={a.id}>
           <td>{++i}</td>
           <td>{a.name}</td>
-          <td>{a.journal.name}</td>
+          {/*<td>{a.journal.name}</td>*/}
           <td><a href={`${env.url}${env.endpoints.files}/?file=${a.link}`}>Скачать</a></td>
         </tr>
       ))}

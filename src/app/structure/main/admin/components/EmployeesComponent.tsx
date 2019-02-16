@@ -45,7 +45,7 @@ class EmployeesComponent extends React.Component<InjectedFormProps, IEmployeesSt
     if (r.status === 200)
     {
       this.setState({...this.state,
-        employees: this.state.employees && this.state.employees.concat(r.data) || undefined,
+        employees: this.state.employees && this.state.employees.concat(r.data).reverse() || undefined,
         notification: {type: NotificationType.Success, text: "Сотрудник успешно добавлен"}
       });
       this.props.reset();
