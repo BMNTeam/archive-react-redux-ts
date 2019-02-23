@@ -11,6 +11,7 @@ import ArticleComponent from "./admin/components/ArticleComponent";
 import EmployeesComponent from "./admin/components/EmployeesComponent";
 import JournalComponent from "./admin/components/JournalComponent";
 import ReferenceComponent from "./admin/components/ReferenceComponent";
+import {ReferencesComponent} from "./admin/components/references.component";
 import ReportComponent from "./admin/components/ReportComponent";
 import {ReportsComponent} from "./admin/components/reports.component";
 import "./main.component.scss";
@@ -33,6 +34,7 @@ class MainComponent extends React.Component<{noContainer: boolean, changeContain
                    </div>
                    <Route path="/admin" component={ReportComponent} />
                    <Route path="/reports" component={ReportsComponent} />
+                   <Route path="/references" component={ReferencesComponent} />
                    <Route path="/reference" component={ReferenceComponent} />
                    <Route path="/employees" component={EmployeesComponent} />
                    <Route path="/article" component={ArticleComponent} />
