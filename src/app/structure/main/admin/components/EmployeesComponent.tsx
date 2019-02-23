@@ -152,7 +152,7 @@ export const getEmployesTable = (emp: IEmployee[]) => (
     <tbody>
     {emp.map((e, i) => (
       <tr key={e.id}>
-        <td>{i + 2}</td>
+        <td>{++i}</td>
         <td>{e.full_name}</td>
         <td>{e.position}</td>
         <td>{e.degree}</td>
