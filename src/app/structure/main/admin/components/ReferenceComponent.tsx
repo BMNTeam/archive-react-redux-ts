@@ -121,19 +121,6 @@ class ReferenceComponent extends React.Component<InjectedFormProps, IOpitons> {
                             </div>
 
                             <div className="form-group">
-                                <label>Руководитель</label>
-                                <Field component={props =>
-                                  <Select
-                                    value={props.input.value}
-                                    onChange={props.input.onChange}
-                                    options={this.state.employees}
-                                    isMulti={false}
-                                    placeholder="Выбрать"
-                                  />}
-                                       name="manager"
-                                />
-                            </div>
-                            <div className="form-group">
                                 <label>Исполнители</label>
                                 <Field component={props =>
                                   <Select

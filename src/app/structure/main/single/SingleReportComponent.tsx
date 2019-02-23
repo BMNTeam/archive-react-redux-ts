@@ -64,9 +64,10 @@ export class SingleReportComponent extends React.Component<any, ISingleState> {
           </div>
 
         </div>
-        <h5>Авторы</h5>
-        {getEmployesTable(data.employees, data.manager)}
-
+        <h5>Исполнители</h5>
+        {getEmployesTable(data.employees && data.employees
+          .filter(e => e.id !== (data.manager && data.manager.id)))
+        }
 
         <br/>
         <h3>Документы</h3>

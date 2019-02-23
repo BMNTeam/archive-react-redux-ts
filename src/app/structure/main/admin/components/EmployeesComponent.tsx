@@ -139,7 +139,7 @@ class EmployeesComponent extends React.Component<InjectedFormProps, IEmployeesSt
 
 }
 
-export const getEmployesTable = (emp: IEmployee[], manager?: IEmployee) => (
+export const getEmployesTable = (emp: IEmployee[]) => (
   <table className="table table-hover">
     <thead>
     <tr>
@@ -150,16 +150,6 @@ export const getEmployesTable = (emp: IEmployee[], manager?: IEmployee) => (
     </tr>
     </thead>
     <tbody>
-    {
-      manager &&
-         <tr>
-          <td>1</td>
-          <td>{manager.full_name}</td>
-          <td>{manager.position}</td>
-          <td>{manager.degree}</td>
-        </tr>
-
-    }
     {emp.map((e, i) => (
       <tr key={e.id}>
         <td>{i + 2}</td>
