@@ -10,8 +10,8 @@ export const env = {
         search: 'api/search',
         singleSearch: 'api/search/single'
     },
-    url: 'http://archive.com:8888/',
-    // url: 'http://sniish.bmnteam.com/'
+    // url: 'http://archive.com:8888/',
+    url: 'https://sniish.bmnteam.com/'
 
 
 };
